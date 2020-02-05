@@ -15,6 +15,7 @@
           hfov="200"
           autoRotate="-2"
           vaov="0"
+          :hotSpot="hotSpot"
         ></VuePannellum>
       </div>
     </div>
@@ -32,9 +33,24 @@
       </div>
     </div>
     <h5>360 Photos</h5>
-    <small>photos taken from <a href="http://Pixelid.com">Pixelid.com</a></small>
+    <small
+      >photos taken from <a href="http://Pixelid.com">Pixelid.com</a></small
+    >
     <div class="row text-center mt-3">
       <div class="col-md-4 my-2" v-for="image in images360" :key="image">
+        <b-img
+          thumbnail
+          fluid
+          :src="image"
+          alt="Image thumbnail"
+          @click="selectImage(image)"
+        ></b-img>
+      </div>
+    </div>
+    <h5>Daphne Photos</h5>
+    <small>Daphne Photos</small>
+    <div class="row text-center mt-3">
+      <div class="col-md-4 my-2" v-for="image in imagesDaphne" :key="image">
         <b-img
           thumbnail
           fluid
@@ -62,12 +78,15 @@ export default {
         '/img/360-5.jpg',
         '/img/360-6.jpg'
       ],
+      imagesDaphne: ['/img/daphne-1.jpg', '/img/daphne-2.jpg'],
       selectedImage: '/img/pano 1.jpg'
     }
   },
   methods: {
     selectImage(image) {
       this.selectedImage = image
+      document.body.scrollTop = 0 // For Safari
+      document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
     }
   }
 }
