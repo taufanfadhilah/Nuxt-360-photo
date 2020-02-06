@@ -47,10 +47,23 @@
         ></b-img>
       </div>
     </div>
-    <h5>Daphne Photos</h5>
-    <small>Daphne Photos</small>
+    <h5>Daphne's Photos</h5>
+    <small>Daphne's Photos</small>
     <div class="row text-center mt-3">
       <div class="col-md-4 my-2" v-for="image in imagesDaphne" :key="image">
+        <b-img
+          thumbnail
+          fluid
+          :src="image"
+          alt="Image thumbnail"
+          @click="selectImage(image)"
+        ></b-img>
+      </div>
+    </div>
+    <h5>Daphne's 360 Photos</h5>
+    <small>Daphne's 360 Photos</small>
+    <div class="row text-center mt-3">
+      <div class="col-md-4 my-2" v-for="image in images360Daphne" :key="image">
         <b-img
           thumbnail
           fluid
@@ -79,6 +92,13 @@ export default {
         '/img/360-6.jpg'
       ],
       imagesDaphne: ['/img/daphne-1.jpg', '/img/daphne-2.jpg'],
+      images360Daphne: [
+        '/img/daphne360-5.jpg',
+        '/img/daphne360-4.jpg',
+        '/img/daphne360-3.jpg',
+        '/img/daphne360-2.jpg',
+        '/img/daphne360-1.jpg'
+      ],
       selectedImage: '/img/pano 1.jpg'
     }
   },
