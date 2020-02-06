@@ -17,6 +17,7 @@
           vaov="0"
           :hotSpot="hotSpot"
         ></VuePannellum>
+        <p>Label: {{selectedImage}}</p>
       </div>
     </div>
     <h5>Panorama Photos</h5>
