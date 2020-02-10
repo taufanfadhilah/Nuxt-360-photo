@@ -15,7 +15,7 @@
           hfov="200"
           autoRotate="-2"
           vaov="0"
-          :hotSpot="hotSpot"
+          :hotSpots="hotSpot"
         ></VuePannellum>
         <p>Label: {{selectedImage}}</p>
       </div>
@@ -100,7 +100,27 @@ export default {
         '/img/daphne360-2.jpg',
         '/img/daphne360-1.jpg'
       ],
-      selectedImage: '/img/pano 1.jpg'
+      selectedImage: '/img/pano 1.jpg',
+      hotSpot:[
+        {
+            pitch: 14.1,
+            yaw: 1.5,
+            type: "info",
+            text: "Baltimore Museum of Art",
+        },
+        {
+            pitch: -9.4,
+            yaw: 222.6,
+            type: "info",
+            text: "Art Museum Drive"
+        },
+        {
+            pitch: -0.9,
+            yaw: 144.4,
+            type: "info",
+            text: "North Charles Street"
+        }
+    ]
     }
   },
   methods: {
