@@ -11,8 +11,8 @@
         <VuePannellum
           :src="selectedImage"
           showZoom="true"
-          showFullscreen="true"
-          hfov="200"
+          :showFullscreen="true"
+          hfov=200
           autoRotate="-2"
           vaov="0"
           :hotSpots="hotSpot"
@@ -74,6 +74,13 @@
         ></b-img>
       </div>
     </div>
+    <h5>Pannellum with panellum.viewer</h5>
+    <small>360 Photos</small>
+    <div class="row text-center mt-3">
+      <div class="col-md-12 text-center">
+        <div id="panorama"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -103,10 +110,11 @@ export default {
       selectedImage: '/img/pano 1.jpg',
       hotSpot:[
         {
-            pitch: 14.1,
-            yaw: 1.5,
+            pitch: 20,
+            yaw: 9,
             type: "info",
             text: "Baltimore Museum of Art",
+            clickHandlerFunc: this.handleClick
         },
         {
             pitch: -9.4,
@@ -128,7 +136,65 @@ export default {
       this.selectedImage = image
       document.body.scrollTop = 0 // For Safari
       document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
+    },
+    handleClick(){
+      console.log("Clicked")
     }
+  },
+  mounted(){
+    //required field :
+    /*
+    scenes -> location[]
+      location[] -> 
+        pitch
+        yaw
+        
+
+    */
+    pannellum.viewer('panorama', {   
+    "default": {
+        firstScene: "circle",
+        author: "Matthew Petroff",
+        sceneFadeDuration: 1000
+    },
+    scenes: {
+        circle: {
+            title: "Mason Circle",
+            hfov: 110,
+            pitch: -3,
+            yaw: 117,
+            type: "equirectangular",
+            panorama: "/img/360-1.jpg",
+            hotSpots: [
+                {
+                    pitch: -2.1,
+                    yaw: 132.9,
+                    type: "scene",
+                    text: "Spring House or Dairy",
+                    sceneId: "house"
+                }
+            ]
+        },
+        house: {
+            title: "Spring House or Dairy",
+            hfov: 110,
+            yaw: 5,
+            type: "equirectangular",
+            panorama: "/img/360-2.jpg",
+            hotSpots: [
+                {
+                    pitch: -0.6,
+                    yaw: 37.1,
+                    type: "scene",
+                    text: "Mason Circle",
+                    sceneId: "circle",
+                    targetYaw: -23,
+                    targetPitch: 2
+                }
+            ]
+        }
+    }
+});
   }
 }
 </script>
@@ -145,5 +211,9 @@ body {
 }
 .img-thumbnail {
   cursor: pointer;
+}
+#panorama {
+    width: 600px;
+    height: 400px;
 }
 </style>
