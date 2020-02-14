@@ -12,7 +12,18 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/pannellum@2.5.4/build/pannellum.css"
+      },
+    ],
+    script: [
+      {
+        src: "https://cdn.jsdelivr.net/npm/pannellum@2.5.4/build/pannellum.js",
+        async: true,
+        defer: true
+      },
     ]
   },
   /*
